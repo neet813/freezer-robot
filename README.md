@@ -139,7 +139,7 @@ Estimated savings: **₹500–₹1000 per month** from reduced wasted food.
 freezer-robot/
 ├── README.md
 ├── freezer-robot.ino
-├── PARTS.md
+├── PARTS_LIST.md
 ├── WIRING.md
 └── photos/
 ```
