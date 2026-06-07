@@ -35,24 +35,54 @@ I'm not alone. Students living alone, busy professionals, anyone who cooks irreg
 
 ---
 
-## 🛠️ **What I Used**
+## 🛠️ **What I Used (Real Cost Breakdown)**
 
-### **Hardware:**
-| Component | Cost | Why |
-|-----------|------|-----|
-| ESP32 Dev Board (WiFi + Bluetooth) | ₹250 | Brain of the device |
-| 0.96" OLED Display (I2C SSD1306) | ₹200 | Tiny, crisp screen |
-| 3.7V LiPo Battery (1000mAh) | ₹299 | Powers without USB cable |
-| TP4056 Charging Module | ₹55 | Safe battery charging |
-| Jumper Wires (male-to-female) | ₹50 | Connections |
-| Push Button (12mm) | ₹6 | Wake/sleep device |
-| Magnetic Squares | ₹33 | Stick to fridge |
-| **Total** | **~₹900** | One-time cost |
+### **Hardware Cost:**
+
+| Component | Quantity | Unit Price | Total Cost | Why |
+|-----------|----------|-----------|-----------|-----|
+| ESP32 Dev Board (WiFi + Bluetooth) | 1 | ₹250 | ₹250 | Brain of the device |
+| 0.96" OLED Display (I2C SSD1306) | 1 | ₹200 | ₹200 | Tiny, crisp screen |
+| Jumper Wires (40+40+40 pack) | 1 | ₹150 | ₹150 | Connections (got extras) |
+| 3.7V LiPo Battery (1000mAh) | 1 | ₹299 | ₹299 | Powers without USB |
+| TP4056 Charging Module | 1 | ₹55 | ₹55 | Safe battery charging |
+| Push Button (10 pack) | 1 | ₹59 | ₹59 | Only need 1, got 9 spares |
+| Magnetic Squares (12 pack) | 1 | ₹399 | ₹399 | Only need 2-3, got extras |
+| Delivery Fees | - | - | ₹150 | Multiple Amazon orders |
+| **TOTAL** | | | **₹1,662** | Actual spending |
+
+**Rounded up to ~₹2000** when including:
+- Spare components for future projects
+- Possible returns/replacements
+- Miscellaneous items
 
 ### **Software:**
 - Arduino IDE (free)
 - Adafruit GFX + SSD1306 libraries (free)
 - C++ embedded code (no external dependencies)
+
+---
+
+## 💡 **Cost vs Value**
+
+**What you actually NEED:**
+- ESP32: ₹650
+- OLED: ₹200
+- Jumper wires: ₹50 (don't need 120)
+- Battery: ₹299
+- Charging module: ₹55
+- Magnets: ₹30
+
+**Minimum viable cost: ~₹1300**
+
+**What I bought:**
+- Bulk component packs (for future projects)
+- Multiple delivery orders
+- Spares for tinkering
+
+**Real cost: ~₹2000**
+
+**Why?** Because I'm building more projects and keeping extras. But if you're just making ONE device, you can do it for ₹900-1000.
 
 ---
 
@@ -127,6 +157,8 @@ Full Arduino sketch is in the GitHub repo: [neet813/freezer-robot](https://githu
 
 **Estimated savings:** ₹500-1000/month (stopped wasting forgotten food)
 
+**ROI:** Device cost back in 2-4 months from reduced food waste.
+
 ---
 
 ## 🚀 **Next Steps**
@@ -155,6 +187,8 @@ Full Arduino sketch is in the GitHub repo: [neet813/freezer-robot](https://githu
 3. **Solve your own problem first** (then others might want it)
 4. **Document as you build** (future you will thank you)
 5. **Test with real usage** (don't assume it's useful)
+6. **Be honest about costs** (people respect transparency)
+7. **Using AI to code faster is smart, not cheating** (it's a tool like any other)
 
 ---
 
@@ -164,9 +198,8 @@ Full Arduino sketch is in the GitHub repo: [neet813/freezer-robot](https://githu
 freezer-robot/
 ├── README.md (this file)
 ├── freezer-robot.ino (main code)
-├── parts-list.md (component shopping list)
-├── wiring-diagram.md (how to connect everything)
-├── build-guide.md (step-by-step instructions)
+├── PARTS.md (component shopping list)
+├── WIRING.md (how to connect everything)
 └── photos/ (build process images)
 ```
 
@@ -174,11 +207,12 @@ freezer-robot/
 
 ## 🙋 **Questions?**
 
-- **How much does it cost?** ~₹900 initial investment
+- **How much does it cost?** ~₹2000 (including extras) or ~₹900 (minimum viable)
 - **How long to build?** 2-3 hours (wiring + code upload + testing)
 - **Does it need WiFi?** No, it creates its own hotspot
 - **How long does battery last?** 5-7 days (currently USB powered for testing)
 - **Can I customize it?** Yes! Full code is open source
+- **Did you use AI?** Yes, for code + documentation assistance. It's a tool.
 
 ---
 
@@ -218,10 +252,12 @@ If you have the same problem, build your own. It's easier than you think.
 
 ## 🤝 **Want to Build One?**
 
-1. Fork this repo
-2. Follow the build guide
-3. Add your own personality
-4. Share your version!
+1. Check the cost breakdown above
+2. Order components from PARTS.md
+3. Follow the wiring guide
+4. Flash the code
+5. Mount on your fridge!
+6. Add your own personality
 
 **Tag me:** [@just_nav.neet](https://instagram.com/just_nav.neet) (I'd love to see your builds!)
 
