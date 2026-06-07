@@ -49,7 +49,7 @@ I'm not alone. Students living alone, busy professionals, anyone who cooks irreg
 | Push Button (10 pack) | 1 | ₹59 | ₹59 | Only need 1, got 9 spares |
 | Magnetic Squares (12 pack) | 1 | ₹399 | ₹399 | Only need 2-3, got extras |
 | Delivery Fees | - | - | ₹150 | Multiple Amazon orders |
-| **TOTAL** | | | **₹1,662** | Actual spending |
+
 
 **Rounded up to ~₹2000** when including:
 - Spare components for future projects
