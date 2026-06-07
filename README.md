@@ -82,7 +82,7 @@ I'm not alone. Students living alone, busy professionals, anyone who cooks irreg
 
 **Real cost: ~₹2000**
 
-**Why?** Because I'm building more projects and keeping extras. But if you're just making ONE device, you can do it for ₹900-1000.
+**Why?** Because I'm building more projects and keeping extras. But if you're just making ONE device, you can do it for ₹1200-2000.
 
 ---
 
@@ -127,7 +127,7 @@ Use jumper wires. Take your time, check twice.
 
 ## 💻 **The Code**
 
-Full Arduino sketch is in the GitHub repo: [neet813/freezer-robot](https://github.com/neet813/freezer-robot)
+Full Arduino sketch is in the GitHub repo: [neet813/freezer-robot](https://github.com/neet813/freezer-robot.ino)
 
 **Key features:**
 - WiFi hotspot (no internet needed)
