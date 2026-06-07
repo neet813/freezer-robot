@@ -127,7 +127,7 @@ Use jumper wires. Take your time, check twice.
 
 ## 💻 **The Code**
 
-Full Arduino sketch is in the GitHub repo: [neet813/freezer-robot](https://github.com/neet813/freezer-robot.ino/freezer-robot.ino)
+Full Arduino sketch is in the GitHub repo: [neet813/freezer-robot] Check out: freezer-robot.ion file.
 
 **Key features:**
 - WiFi hotspot (no internet needed)
