@@ -163,6 +163,10 @@ Full Arduino sketch is in the GitHub repo: [neet813/freezer-robot](https://githu
 
 ## 🚀 **Next Steps**
 
+## 📸 Photos
+
+Coming soon! Currently testing on breadboard. Will add photos after mounting on fridge.
+
 ### **Short term:**
 - [x] Get ESP32 + OLED working
 - [x] Build web interface
