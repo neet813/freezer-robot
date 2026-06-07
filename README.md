@@ -41,7 +41,7 @@ I'm not alone. Students living alone, busy professionals, anyone who cooks irreg
 
 | Component | Quantity | Unit Price | Total Cost | Why |
 |-----------|----------|-----------|-----------|-----|
-| ESP32 Dev Board (WiFi + Bluetooth) | 1 | ₹250 | ₹250 | Brain of the device |
+| ESP32 Dev Board (WiFi + Bluetooth) | 1 | ₹650 | ₹650 | Brain of the device |
 | 0.96" OLED Display (I2C SSD1306) | 1 | ₹200 | ₹200 | Tiny, crisp screen |
 | Jumper Wires (40+40+40 pack) | 1 | ₹150 | ₹150 | Connections (got extras) |
 | 3.7V LiPo Battery (1000mAh) | 1 | ₹299 | ₹299 | Powers without USB |
