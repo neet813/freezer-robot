@@ -4,6 +4,7 @@
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
+#include <DNSServer.h>
 
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 32
@@ -12,6 +13,8 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
 WebServer server(80);
 Preferences prefs;
+DNSServer dnsServer;
+const byte DNS_PORT = 53;
 
 const char* ssid = "FreezerList";
 const char* password = "12345678";
@@ -46,8 +49,8 @@ void saveItem(int i, String n, String d) {
 
 void removeItem(int i) {
   prefs.begin("freezer", false);
-  prefs.remove(("n" + String(i)).c_str());
-  prefs.remove(("d" + String(i)).c_str());
+  prefs.putString(("n" + String(i)).c_str(), "");
+  prefs.putString(("d" + String(i)).c_str(), "");
   prefs.end();
 }
 
@@ -58,6 +61,15 @@ int firstEmpty() {
   return -1;
 }
 
+void drawCenteredText(String text, int y) {
+  int16_t x1, y1;
+  uint16_t w, h;
+  display.getTextBounds(text, 0, 0, &x1, &y1, &w, &h);
+  int x = (SCREEN_WIDTH - w) / 2;
+  if (x < 0) x = 0;
+  display.setCursor(x, y);
+  display.print(text);
+}
 
 void updateDisplay() {
   display.clearDisplay();
@@ -66,7 +78,6 @@ void updateDisplay() {
 
   int count = 0;
   int itemIndices[MAX_ITEMS];
-
   for (int i = 0; i < MAX_ITEMS; i++) {
     if (names[i].length() > 0) {
       itemIndices[count] = i;
@@ -149,7 +160,7 @@ String pageHTML() {
       p += "<div class='date'>Expiry: " + esc(dates[i]) + "</div>";
       p += "<div class='actions'>";
       p += "<a class='btn edit' href='/edit?id=" + String(i) + "'>Edit</a>";
-      p += "<a class='btn del' href='/delete?id=" + String(i) + "' onclick=\"return confirm('Delete?')\">Delete</a>";
+      p += "<a class='btn del' href='/delete?id=" + String(i) + "'>Delete</a>";
       p += "</div></div>";
     }
   }
@@ -182,41 +193,52 @@ String editHTML(int id) {
   return p;
 }
 
-void handleRoot() { server.send(200, "text/html", pageHTML()); }
+void handleRoot() {
+  server.send(200, "text/html", pageHTML());
+}
+
 void handleAdd() {
   String n = server.arg("name");
   String d = server.arg("date");
   int i = firstEmpty();
-  if (i >= 0) { names[i] = n; dates[i] = d; saveItem(i, n, d); }
+  if (i >= 0) {
+    names[i] = n;
+    dates[i] = d;
+    saveItem(i, n, d);
+  }
   server.sendHeader("Location", "/");
   server.send(303);
 }
+
 void handleEdit() {
   int id = server.arg("id").toInt();
-  if (id < 0 || id >= MAX_ITEMS || names[id].length() == 0) { server.send(404, "text/plain", "Not found"); return; }
+  if (id < 0 || id >= MAX_ITEMS || names[id].length() == 0) {
+    server.send(404, "text/plain", "Not found");
+    return;
+  }
   server.send(200, "text/html", editHTML(id));
 }
+
 void handleUpdate() {
   int id = server.arg("id").toInt();
-  if (id >= 0 && id < MAX_ITEMS) { names[id] = server.arg("name"); dates[id] = server.arg("date"); saveItem(id, names[id], dates[id]); }
+  if (id >= 0 && id < MAX_ITEMS) {
+    names[id] = server.arg("name");
+    dates[id] = server.arg("date");
+    saveItem(id, names[id], dates[id]);
+  }
   server.sendHeader("Location", "/");
   server.send(303);
 }
+
 void handleDelete() {
   int id = server.arg("id").toInt();
-  if (id >= 0 && id < MAX_ITEMS) { removeItem(id); names[id] = ""; dates[id] = ""; }
+  if (id >= 0 && id < MAX_ITEMS) {
+    removeItem(id);
+    names[id] = "";
+    dates[id] = "";
+  }
   server.sendHeader("Location", "/");
   server.send(303);
-}
-
-
-void drawCenteredText(String text, int y) {
-  int16_t x1, y1;
-  uint16_t w, h;
-  display.getTextBounds(text, 0, 0, &x1, &y1, &w, &h);
-  int x = (SCREEN_WIDTH - w) / 2;
-  display.setCursor(x, y);
-  display.print(text);
 }
 
 void setup() {
@@ -236,12 +258,17 @@ void setup() {
 
   WiFi.mode(WIFI_AP);
   WiFi.softAP(ssid, password);
+  dnsServer.start(DNS_PORT, "*", WiFi.softAPIP());
 
   server.on("/", handleRoot);
   server.on("/add", HTTP_POST, handleAdd);
   server.on("/edit", HTTP_GET, handleEdit);
   server.on("/update", HTTP_POST, handleUpdate);
   server.on("/delete", HTTP_GET, handleDelete);
+  server.onNotFound([]() {
+    server.sendHeader("Location", "/", true);
+    server.send(302, "text/plain", "");
+  });
 
   server.begin();
 
@@ -250,6 +277,17 @@ void setup() {
 }
 
 void loop() {
+  // DNS (non-blocking, runs fast)
+  dnsServer.processNextRequest();
+  
+  // Web server (handles requests)
   server.handleClient();
-  updateDisplay();
+
+  // Display update (only every 500ms, won't block)
+  static unsigned long lastDisplay = 0;
+  unsigned long now = millis();
+  if (now - lastDisplay >= 500) {
+    updateDisplay();
+    lastDisplay = now;
+  }
 }
