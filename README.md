@@ -45,6 +45,16 @@ So the information should live *on the fridge* — not in your phone, not in an 
 
 That's the whole idea. Put the inventory exactly where the behaviour already happens. No new habit required.
 
+
+---
+
+### See It In Action
+
+![OLED display showing item and expiry](ScreenOLED.png)
+
+![Phone web interface — add, edit, delete items](ScreenshotCaptive.png)
+
+
 ---
 
 ## What It Does
@@ -161,14 +171,6 @@ Specific things I caught: 2 condiments about to expire that I actually used. One
 Estimated savings: ₹500–1000/month — not from coupons or budgeting, just from not wasting what I already paid for.
 
 The robot face helped too. It made me *want* to check it.
-
-
-
-### See It In Action
-
-![OLED display showing item and expiry](ScreenOLED.png)
-
-![Phone web interface — add, edit, delete items](ScreenshotCaptive.png)
 
 ---
 
