@@ -162,6 +162,14 @@ Estimated savings: ₹500–1000/month — not from coupons or budgeting, just f
 
 The robot face helped too. It made me *want* to check it.
 
+
+
+### See It In Action
+
+![OLED display showing item and expiry](ScreenOLED.png)
+
+![Phone web interface — add, edit, delete items](ScreenshotCaptive.png)
+
 ---
 
 ## What I Learned
